@@ -22,13 +22,13 @@
 </head>
 <body>
 
-    <h1>Temps restant à se supporter</h1>
+    <h1>Countdown Timer</h1>
     <div id="countdown"></div>
     <img id="clickable-image" src="https://i.imgur.com/Rq9YyWD.jpg" >
 
     <script>
         // Set the date we're counting down to
-        const countDownDate = new Date("Nov 13, 2024 06:41:00").getTime();
+        const countDownDate = new Date("Dec 31, 2025 23:59:59").getTime();
 
         // Update the count down every 1 second
         const countdownFunction = setInterval(function() {
@@ -38,7 +38,7 @@
             // Find the distance between now and the count down date
             const distance = countDownDate - now;
 
-            // Time calculations for days, hours, minutes and seconds
+            // Time calculations for years, days, hours, minutes and seconds
             const years = Math.floor(distance / (1000 * 60 * 60 * 24 * 365));
             const days = Math.floor((distance % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -46,7 +46,7 @@
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Display the result in the element with id="countdown"
-            document.getElementById("countdown").innerHTML = years + "a" days + "j" + hours + "h "
+            document.getElementById("countdown").innerHTML = years + "y " + days + "d " + hours + "h "
             + minutes + "m " + seconds + "s ";
 
             // If the count down is over, write some text
