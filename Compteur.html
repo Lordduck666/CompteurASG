@@ -24,42 +24,70 @@
 
     <h1>Countdown Timer</h1>
     <div id="countdown"></div>
-    <img id="clickable-image" src="https://i.imgur.com/Rq9YyWD.jpg" >
+    <img id="clickable-image1" src="https://i.imgur.com/Rq9YyWD.jpg" alt="Clickable Image 1">
+    <h1>Countdown Timer 2</h1>
+    <div id="countdown2"></div>
+    <img id="clickable-image2" src="https://i.imgur.com/47JdGqy.jpg" alt="Clickable Image 2">
 
     <script>
-        // Set the date we're counting down to
+        // Function to flip the numbers upside down
+        function flipNumber(number) {
+            return `<span class="flipped">${number}</span>`;
+        }
+
+        // Set the date we're counting down to for the first timer
         const countDownDate = new Date("Nov 13, 2032 06:41:00").getTime();
 
-        // Update the count down every 1 second
-        const countdownFunction = setInterval(function() {
-            // Get today's date and time
+        // Set the date we're counting down to for the second timer
+        const countDownDate2 = new Date("Aug 24, 2025 12:00:00").getTime();
+
+        // Update the count down every 1 second for both timers
+        setInterval(function() {
             const now = new Date().getTime();
 
-            // Find the distance between now and the count down date
-            const distance = countDownDate - now;
+            // Timer 1 calculations
+            const distance1 = countDownDate1 - now;
+            const years1 = Math.floor(distance1 / (1000 * 60 * 60 * 24 * 365.25));
+            const days1 = Math.floor((distance1 % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24));
+            const hours1 = Math.floor((distance1 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes1 = Math.floor((distance1 % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds1 = Math.floor((distance1 % (1000 * 60)) / 1000);
 
-            // Time calculations for years, days, hours, minutes and seconds
-            const years = Math.floor(distance / (1000 * 60 * 60 * 24 * 365));
-            const days = Math.floor((distance % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("countdown1").innerHTML = years1 + "y " + days1 + "d " + hours1 + "h "
+            + minutes1 + "m " + seconds1 + "s ";
 
-            // Display the result in the element with id="countdown"
-            document.getElementById("countdown").innerHTML = years + "y " + days + "d " + hours + "h "
-            + minutes + "m " + seconds + "s ";
-
-            // If the count down is over, write some text
-            if (distance < 0) {
+            if (distance1 < 0) {
                 clearInterval(countdownFunction);
-                document.getElementById("countdown").innerHTML = "EXPIRED";
+                document.getElementById("countdown1").innerHTML = "EXPIRED";
+            }
+
+            // Timer 2 calculations
+            const distance2 = countDownDate2 - now;
+            const years2 = Math.floor(distance2 / (1000 * 60 * 60 * 24 * 365.25));
+            const days2 = Math.floor((distance2 % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24));
+            const hours2 = Math.floor((distance2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes2 = Math.floor((distance2 % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds2 = Math.floor((distance2 % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown2").innerHTML = 
+                flipNumber(years2 + "y ") + flipNumber(days2 + "d ") + flipNumber(hours2 + "h ") +
+                flipNumber(minutes2 + "m ") + flipNumber(seconds2 + "s ");
+
+            if (distance2 < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown2").innerHTML = "EXPIRED";
             }
         }, 1000);
 
+
         // Add click event to the image
-        document.getElementById("clickable-image").onclick = function() {
+        document.getElementById("clickable-image1").onclick = function() {
             alert("Brout");
         };
+        document.getElementById("clickable-image2").onclick = function() {
+            alert("ʇnoɹꓭ");
+        };
+        
     </script>
 
 </body>
